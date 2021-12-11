@@ -1,7 +1,10 @@
 package trpo.yellow.restapi.controllers;
 
 import io.swagger.annotations.*;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -10,13 +13,16 @@ import trpo.yellow.restapi.controllers.dto.Document;
 import trpo.yellow.restapi.controllers.dto.DocumentExtension;
 import trpo.yellow.restapi.services.DocumentGenerator;
 
+import java.io.IOException;
+import java.nio.file.Files;
+
 @RestController("/")
-public class GenerateTemplateController {
+public class GenerateDocumentController {
 
     private final DocumentGenerator documentGenerator;
 
     @Autowired
-    public GenerateTemplateController(DocumentGenerator documentGenerator) {
+    public GenerateDocumentController(DocumentGenerator documentGenerator) {
         this.documentGenerator = documentGenerator;
     }
 
@@ -41,6 +47,12 @@ public class GenerateTemplateController {
             )
     })
     public void generate(@RequestBody Document documentParams, @RequestParam DocumentExtension documentExtension) {
-
+        try {
+            ByteArrayResource resource = new ByteArrayResource(
+                    Files.readAllBytes(documentGenerator.generateDocument().toPath())
+            );
+        }catch (IOException e){
+            throw new Documen
+        }
     }
 }

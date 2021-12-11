@@ -4,10 +4,12 @@ import org.springframework.stereotype.Service;
 import trpo.yellow.restapi.model.GeneratedDocument;
 import trpo.yellow.restapi.services.DocumentGenerator;
 
+import java.io.File;
+
 @Service
 public class DocumentGeneratorImpl implements DocumentGenerator {
     @Override
-    public GeneratedDocument generateDocument() {
+    public File generateDocument() {
         return null;
     }
 }
