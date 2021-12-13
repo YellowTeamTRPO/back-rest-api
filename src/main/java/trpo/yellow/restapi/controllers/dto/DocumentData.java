@@ -1,6 +1,6 @@
 package trpo.yellow.restapi.controllers.dto;
 
-public class Document {
+public class DocumentData {
 
     private String institute;
     private String higherSchool;
