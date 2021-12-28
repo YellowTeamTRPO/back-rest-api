@@ -51,9 +51,12 @@ public class GenerateDocumentController {
     public ResponseEntity<byte[]> generate(@RequestBody DocumentData documentData,
                                            @RequestParam(name = "document_extension") DocumentExtension documentExtension) throws IOException {
         MediaType responseContentType = documentExtension == DocumentExtension.PDF ? MediaType.APPLICATION_PDF : MediaType.TEXT_PLAIN;
+        String responseFileName = documentData.getStudentName() + (documentExtension == DocumentExtension.PDF ? ".pdf"  : ".txt");
+        String attachmentHeaderValue = "attachment;filename=" + responseFileName;
         return ResponseEntity
                 .ok()
                 .contentType(responseContentType)
+                .header("Content-Disposition", attachmentHeaderValue)
                 .body(Files.readAllBytes(documentGenerator.generateDocument(documentData, documentExtension).toPath()));
     }
 }
