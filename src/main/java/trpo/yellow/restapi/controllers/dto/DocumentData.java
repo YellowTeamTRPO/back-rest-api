@@ -1,13 +1,15 @@
 package trpo.yellow.restapi.controllers.dto;
 
-public class DocumentData {
+import lombok.Data;
 
+@Data
+public class DocumentData {
     private String institute;
     private String higherSchool;
     private String discipline;
-    private String templateType;
-    private Integer templateNumber;
-    private String templateTopic;
+    private String type;
+    private Integer number;
+    private String topic;
     private Integer variant;
     private String studentName;
     private String teacherName;

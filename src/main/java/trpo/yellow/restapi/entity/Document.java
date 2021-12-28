@@ -1,5 +1,6 @@
 package trpo.yellow.restapi.entity;
 
+import lombok.Data;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -8,6 +9,7 @@ import java.io.File;
 import java.util.UUID;
 
 @Entity
+@Data
 @Table(name = "document")
 public class Document {
 
@@ -24,6 +26,7 @@ public class Document {
     @Column(name = "year")
     private Integer year;
 
+    @Lob
     @Column(name = "template")
-    private File template;
+    private byte[] template;
 }

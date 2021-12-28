@@ -9,7 +9,7 @@ import trpo.yellow.restapi.services.LoginService;
 
 import java.util.concurrent.Callable;
 
-@RestController("/")
+@RestController()
 public class LoginController {
 
     private final LoginService loginService;

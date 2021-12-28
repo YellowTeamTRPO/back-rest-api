@@ -4,4 +4,4 @@ CREATE TABLE IF NOT EXISTS document
     type VARCHAR NOT NULL,
     year INTEGER NOT NULL,
     template BLOB NOT NULL
-)
+);
